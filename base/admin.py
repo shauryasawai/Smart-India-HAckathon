@@ -2,6 +2,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
+from .models import KnowledgeLevel
+
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
@@ -17,6 +19,9 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = UserAdmin.add_fieldsets + (
         (None, {'fields': ('interests', 'initial_score')}),
     )
-
-# Register the custom user model with the custom admin
 admin.site.register(CustomUser, CustomUserAdmin)
+
+class KnowledgeLevelAdmin(admin.ModelAdmin):
+    list_display = ('user', 'topic', 'level')  # Ensure these are valid fields
+
+admin.site.register(KnowledgeLevel, KnowledgeLevelAdmin)

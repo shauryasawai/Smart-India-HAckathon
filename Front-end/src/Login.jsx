@@ -18,8 +18,9 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8000/auth/jwt/create/', credentials);
-      localStorage.setItem('access', response.data.auth_token); 
-      navigate('/dashboard');
+      const token = response.data.token; 
+        localStorage.setItem('token', response.data.token); 
+        navigate('/knowledge-level');
     } catch (error) {
       console.error('Login error', error);
     }

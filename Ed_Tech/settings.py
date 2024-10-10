@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,5 @@ DJOSER = {
         'user_create': 'base.serializers.CustomUserCreateSerializer',
     },
 }
+
+DEBUG = True
